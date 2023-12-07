@@ -19,8 +19,31 @@ class UsuarioController extends AbstractActionController
         return new ViewModel(['usuarios' => $this->table->getAll()]);
     }
 
+    //Sistema de cadastrado de usuario 
     public function adicionarAction(){
-        return new ViewModel();
+        // Cria um formulário de usuário
+        $form = new UsuarioForm();
+        $form->get('submit')->setValue('adicionar');
+
+        $request = $this->getRequest();
+        // Verifica se a requisição é do tipo POST
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            // Verifica se o formulário é válido
+            if (!$form->isValid()) {
+                return new ViewModel(['form' => $form]);
+            }
+            // Cria um novo objeto de usuário e preenche com os dados do formulário
+            $usuario = new \Usuario\Model\Usuario();
+            $usuario->exchangeArray($form->getData());
+
+            // Salva o usuário no banco de dados
+            $this->table->saveUsuario($usuario);
+           // Redireciona para a rota 'usuario' após a adição bem-sucedida
+            return $this->redirect()->toRoute('usuario');
+        }   
+           // Retorna uma ViewModel com o formulário para exibição inicial
+        return new ViewModel(['form' => $form]);
     }
 
     public function editarAction(){
