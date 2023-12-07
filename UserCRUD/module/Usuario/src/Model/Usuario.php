@@ -9,7 +9,7 @@ class Usuario
     private $email;
     private $senha;
 
-    
+     // Método para popular os atributos da classe a partir de um array de dados
     public function exchangeArray(array $data)
     {
         $this->id = isset($data['id']) ? $data['id'] : null;
@@ -18,6 +18,7 @@ class Usuario
         $this->senha = isset($data['senha']) ? $data['senha'] : null;
     }
 
+    // Métodos para obter os valores dos atributos
     public function getId(){
         return $this ->id;
     }
@@ -31,6 +32,7 @@ class Usuario
         return  $this ->senha;
     }
 
+     // Métodos para definir os valores dos atributos
     public function setId($id){
         $this->id = $id;
     }

@@ -32,6 +32,19 @@ return [
         'template_path_stack' => [ 'usuario' => __DIR__ . '/../view',
         ],
     ],
+    'db' => [
+        'driver'   => 'Pdo_Mysql',
+        'database' => 'cadastrado',
+        'username' => 'root',
+        'password' => '',
+        'hostname' => '127.0.0.1',
+    ],
+
+    'service_manager' => [
+        'factories' => [
+            Adapter::class => InvokableFactory::class,
+        ],
+    ],
 ];
 
 
