@@ -85,7 +85,20 @@ class UsuarioController extends AbstractActionController
 
     public function removerAction()
     {
-        return new ViewModel();
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (0 === $id) {
+            return $this->redirect()->toRoute('usuario');
+        }
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del','Não');
+            if ($del == 'Sim') {
+                $id = (int) $request->getPost('id');
+                $this->table->deleteUsuario($id);
+            }
+            return $this->redirect()->toRoute('usuario');
+        }
+        return ['id' => $id, 'usuario' => $this->table->getUsuario($id)];
     }
 
 }
