@@ -1,8 +1,48 @@
-<?php 
-$nome = "Matheus"
+<?php ?>
 
+<form method="get" action="<?= $this->url('usuario', ['action' => 'buscar']) ?>" class="form-inline">
+
+    <div class="form-group">
+        <label for="searchInput" class="sr-only">Buscar:</label>
+        <input type="text" class="form-control" id="searchInput" name="id" value="<?= $id ?>" placeholder="Digite aqui o ID...">
+
+    </div>
+    <br>
+    <button type="submit"  class="btn btn-primary">Buscar</button>
+</form>
+
+
+<br>
+
+<H1>Lista de pessoas</H1>
+
+<a href="<?= $this->url('usuario', ['action' => 'adicionar']) ?>" class="btn btn-success">Adicionar</a>
+
+<table class="table table-stripped">
+    <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Senha</th>
+        <th>Ação</th>
+    </tr>
+<?php
+foreach ($usuarios  as $usuario) :?>
+        <tr>
+            <td><?= $usuario->getId() ?></td>
+            <td><?= $usuario->getNome() ?></td>
+            <td><?= $usuario->getEmail() ?></td>
+            <td >
+            <input readonly value="<?= $usuario->getSenha() ?>" class="form-control"  name="password" id="password_<?= $usuario->getId() ?>" type="password" size="10">
+            
+             </td>
+             <td>
+                <a href="<?=$this->url('usuario',['action'=>'editar','id'=>$usuario->getId()])?>" class="btn btn-info"><i class="glyphicon glyphicon-edit">Editar</i></a>
+                <a href="<?=$this->url('usuario',['action'=>'remover','id'=>$usuario->getId()])?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash">Excluir</i></a>
+            </td>
+
+        </tr>
+    <?php
+endforeach;
 ?>
-
-<H1>Testando a pagina </H1>
-
-<p><?=$nome?></p>
+</table>
