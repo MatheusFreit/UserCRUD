@@ -1,4 +1,4 @@
-<<?php 
+<?php
 
 namespace Usuario\Controller;
 
@@ -11,5 +11,8 @@ class UsuarioController extends AbstractActionController
     {
         return new ViewModel();
     }
-}
 
+    public function adicionarAction(){
+        return new ViewModel();
+    }
+}
