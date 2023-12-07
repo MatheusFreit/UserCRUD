@@ -6,7 +6,10 @@ Desenvolver um sistema CRUD utilizando o Laminas Framework para o controle de us
 ## Video de Apresentação do Sistema
 Drive: https://drive.google.com/file/d/1BKkL3BUwHMkN8vUQn2MbyYgUSGPQiltJ/view?usp=sharing
 
-Características Principais:
+
+<br>
+
+# Características Principais:
 
 ## Tabela de Usuário:
 
