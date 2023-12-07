@@ -49,5 +49,14 @@ class Usuario
         $this->senha = $senha;
     }
 
+    // Retorna um array contendo cópias dos atributos da classe.
+    public function getArrayCopy(): array {
+        return [
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'email' => $this->email,
+            'senha' => $this->senha,
+        ];
+    }
 
 }

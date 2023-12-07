@@ -46,7 +46,7 @@ class UsuarioController extends AbstractActionController
            // Retorna uma ViewModel com o formulário para exibição inicial
         return new ViewModel(['form' => $form]);
     }
-
+    //Sistema de edição de usuario
     public function editarAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
@@ -82,7 +82,7 @@ class UsuarioController extends AbstractActionController
 
         return $this->redirect()->toRoute('usuario');
     }
-
+    //Sistema de deletar
     public function removerAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
@@ -125,3 +125,12 @@ class UsuarioController extends AbstractActionController
     }
 
 }
+
+    /*
+      /Usuario-> index
+      /Usuario/adicionar -> adicionarAction
+      /Usuario/salvar ->salvarAction
+      /Usuario/editar/1 ->editarAction
+      /Usuario/remover/1 ->removerAction
+      /Usuario/confirmacao ->confirmacaoAction
+     */
