@@ -25,7 +25,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+          //  Controller\IndexController::class => InvokableFactory::class,  subtituindo para o module.php
         ],
     ],
     'view_manager' => [
