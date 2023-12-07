@@ -4,12 +4,13 @@ namespace Usuario\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
+use Usuario\Form\UsuarioForm;
 
 class UsuarioController extends AbstractActionController
 {
     private $table;
 
-    public function __construct(UsuarioTable $table)
+    public function __construct($table)
     {
         $this->table = $table;
     }

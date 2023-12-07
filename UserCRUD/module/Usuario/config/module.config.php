@@ -1,9 +1,10 @@
-<?php 
+<?php
 
-namespace Usuario; 
+namespace Usuario;
+use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
-use Usuario\Controller\UsuarioController;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Usuario\Controller\UsuarioController;
 
 return [
     'router' => [
@@ -25,9 +26,10 @@ return [
     ],
     'controllers' => [
         'factories' => [
-          //  Controller\IndexController::class => InvokableFactory::class,  subtituindo para o module.php
+            //Controller\UsuarioController::class => InvokableFactory::class,
         ],
     ],
+   
     'view_manager' => [
         'template_path_stack' => [ 'usuario' => __DIR__ . '/../view',
         ],
@@ -45,10 +47,8 @@ return [
             Adapter::class => InvokableFactory::class,
         ],
     ],
+    
 ];
 
 
-
-
-
-?>
+?> 
