@@ -1,0 +1,31 @@
+<?php
+$title = "Buscar de Usuario";
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<table class="table table-stripped">
+<tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Senha</th>
+</tr>
+
+<!-- Exiba os detalhes do usuário conforme necessário -->
+<?php if (isset($usuario)) : ?>
+    <tr>
+    <td> <?= $this->escapeHtml($usuario->getId()) ?></td>
+    <td><?= $this->escapeHtml($usuario->getNome()) ?> </td>
+    <td> <?= $this->escapeHtml($usuario->getEmail()) ?></td>
+    <td> <input readonly value="<?= $usuario->getSenha() ?>" class="form-control"  name="password" id="password_<?= $usuario->getId() ?>" type="password" size="10"> </td>
+    </tr>
+     
+<?php else : ?>
+    <p>Usuário não encontrado.</p>
+<?php endif; ?>
+<table>
+<div>
+    <a href="<?= $this->url('usuario', ['action' => 'index']) ?>" class="btn btn-warning">
+        Voltar </a>
+</div>
