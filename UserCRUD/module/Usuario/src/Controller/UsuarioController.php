@@ -47,8 +47,40 @@ class UsuarioController extends AbstractActionController
         return new ViewModel(['form' => $form]);
     }
 
-    public function editarAction(){
-        return new ViewModel();
+    public function editarAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+
+        if ($id === 0) {
+            return $this->redirect()->toRoute('usuario', ['action' => 'adicionar']);
+        }
+
+        try {
+            $usuario = $this->table->getUsuario($id);
+        } catch (\Exception $exc) {
+            return $this->redirect()->toRoute('usuario', ['action' => 'index']);
+        }
+
+        $form = new UsuarioForm();
+        $form->bind($usuario);
+        $form->get('submit')->setAttribute('value', 'Salvar');
+
+        $request = $this->getRequest();
+        $viewData = ['id' => $id, 'form' => $form];
+
+        if (!$request->isPost()) {
+            return $viewData;
+        }
+
+        $form->setData($request->getPost());
+
+        if (!$form->isValid()) {
+            return $viewData;
+        }
+
+        $this->table->saveUsuario($form->getData());
+
+        return $this->redirect()->toRoute('usuario');
     }
 
     public function removerAction()

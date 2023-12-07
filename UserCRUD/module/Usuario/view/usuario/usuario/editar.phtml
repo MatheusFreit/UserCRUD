@@ -3,3 +3,58 @@ $title = "Editando Pessoas";
 $this->headTitle($title);
 ?>
 <h1><?=$this->escapeHtml($title)?></h1>
+
+<?php
+$form->setAttribute('action',$this->url('usuario', ['action' => 'editar','id'=> $id]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+$id =$this->form->get('id');
+$nome = $this->form->get('nome');
+$email = $this->form->get('email');
+$senha = $this->form->get('senha');
+
+
+$nome->setAttribute('class','form-control');
+$email->setAttribute('class','form-control');
+$senha->setAttribute('class','form-control');
+
+$nome->setAttribute('autofocus','autofocus');
+
+$submit = $this->form->get('submit');
+$submit->setAttribute('class','btn btn-primary btn-lg');
+
+?>
+
+<?=$this->formElement($id)?>
+
+<div class="form-group">
+    <div class="col-md-6">
+        <?=$this->formLabel($nome)?>
+        <?=$this->formElement($nome)?>
+        <?=$this->formElementErrors()->render($nome,['class'=>'help-block'])?>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-6">
+        <?=$this->formLabel($email)?>
+        <?=$this->formElement($email)?>
+        <?=$this->formElementErrors()->render($email,['class'=>'help-block'])?>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-4">
+        <td><?=$this->formLabel($senha)?> Nova</td>
+        <?=$this->formElement($senha)?>
+        <!-- Adicione a linha abaixo para exibir a senha atual -->
+        <?=$this->formElementErrors()->render($senha,['class'=>'help-block'])?>
+    </div>
+</div>
+<br>
+<div >
+    <?=$this->formElement($submit)?>
+    <a href="<?=$this->url('usuario',['action'=>'index'])?>" class="btn btn-warning">
+    Voltar</a>
+</div>
+
