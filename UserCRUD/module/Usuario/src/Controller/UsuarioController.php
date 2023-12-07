@@ -19,4 +19,10 @@ class UsuarioController extends AbstractActionController
     public function editarAction(){
         return new ViewModel();
     }
+
+    public function removerAction()
+    {
+        return new ViewModel();
+    }
+
 }
