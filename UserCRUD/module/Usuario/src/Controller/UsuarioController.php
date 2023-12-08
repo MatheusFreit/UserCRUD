@@ -103,11 +103,11 @@ class UsuarioController extends AbstractActionController
 
     public function buscarAction()
     {
-        $id = $this->params()->fromQuery('id', 0);
+        $nome = $this->params()->fromQuery('nome', 0);
 
-        if ($id > 0) {
+        if (!empty($nome)) {
             try {
-                $usuario = $this->table->getUsuario($id);
+                $usuario = $this->table->getUsuarionome($nome);
             } catch (\Exception $e) {
                 return new ViewModel([
                     'usuario' => null,

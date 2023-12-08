@@ -44,6 +44,17 @@ class UsuarioTable{
         return $row; 
     }
 
+    public function getUsuarionome($nome){
+        
+        $rowset = $this->tableGateway->select(["nome" => $nome]);
+        $row = $rowset -> current();
+         // Lança uma exceção se o usuário não for encontrado
+        if(!$row){
+            throw new RuntimeException(sprintf('Não foi encontrado o id %d', $id));
+        }
+        return $row; 
+    }
+
     public function saveUsuario(Usuario $usuario)
     {
         $data = [
